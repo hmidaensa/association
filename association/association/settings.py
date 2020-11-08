@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/3.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -26,7 +26,10 @@ SECRET_KEY = '^66#58@puqcqcst7dr^k$tr*=+yy@si=b)z+6nd0(wl4ruv%(b'
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
+# Use BOOTSTRAP3 if you are using Bootstrap 3
+BOOTSTRAP4 = {
+    'include_jquery': True,
+}
 
 # Application definition
 
@@ -37,8 +40,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-]
+    'crispy_forms',
+    'gerer_water',
+    "bootstrap4",
+    "django_static_fontawesome",
 
+
+]
+#add 'bootstrap4' with crispy_forms
+CRISPY_TEMPLATE_PACK =  'bootstrap4'
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -75,8 +85,11 @@ WSGI_APPLICATION = 'association.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+       'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'association',
+        'USER': 'postgres',
+        'PASSWORD': '',
+        'HOST': 'localhost'
     }
 }
 
@@ -118,3 +131,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS=[
+    os.path.join(BASE_DIR, 'assets')
+]

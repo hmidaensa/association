@@ -1,0 +1,27 @@
+{% extends "gerer_saison/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<form action="" method="post">
+    {% csrf_token %}
+ <div class="card">
+
+                <div class="card-header bg-primary text-white titelAdd">
+                      عملية إضافة سنة إستهلاكية جديدة     &nbsp;&nbsp;<i class="fa fa-pencil"></i>
+                </div>
+                <div class="card-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="name"> </label>
+                            {{form.annne|as_crispy_field}}
+                        </div>
+
+                        <div class="mx-auto">
+                        <button type="submit" class="btn btn-success btn-sm"> احفظ السنة الإستهلاكية&nbsp;&nbsp;<i class="fa fa-save"></i></button></div>
+                    </form>
+                </div>
+            </div>
+
+</form>
+
+{% endblock content %}
